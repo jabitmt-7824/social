@@ -1,7 +1,8 @@
 const express = require("express");
 const port = 8000;
+const env = require("./config/environment");
 const db = require("./config/mongoose");
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 
 const app = express();
 app.use(bodyParser.urlencoded({extended:true})); 
