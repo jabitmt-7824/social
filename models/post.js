@@ -2,8 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-auto-increment');
 const db = require("../config/mongoose");
+
 autoIncrement.initialize(db);
-// schema for doctor
+
+// schema for post
 const postSchema = new Schema({
      caption: {
          type: String,
@@ -25,12 +27,15 @@ const postSchema = new Schema({
         timestamps: true
     }
 );
+
+// autoIncrement postId field
 postSchema.plugin(autoIncrement.plugin, {
     model: 'Post',
     field: 'postId',
     startAt: 1000,
     incrementBy: 1
 });
+
 // create post model
 const Post = mongoose.model("Post", postSchema);
 
